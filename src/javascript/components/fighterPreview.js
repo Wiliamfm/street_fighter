@@ -8,16 +8,50 @@ export function createFighterPreview(fighter, position) {
   });
 
   // todo: show fighter info (image, name, health, etc.)
+  if (fighter) {
+    const cardElement = createElement({
+      tagName: 'div',
+      className: 'card'
+    });
+    const name = createElement({
+      tagName: 'h4'
+    })
+    name.innerHTML = fighter.name;
+    const uList = createElement({
+      tagName: 'ul',
+    });
+    const attack = createElement({
+      tagName: 'li'
+    })
+    attack.innerHTML = "ATTACK: " + fighter.attack;
+    const defense = createElement({
+      tagName: 'li'
+    })
+    defense.innerHTML = "DEFENSE: " + fighter.defense;
+    const health = createElement({
+      tagName: 'li'
+    })
+    health.innerHTML = "HEALTH: " + fighter.health;
+    uList.append(attack);
+    uList.append(defense);
+    uList.append(health);
+    cardElement.append(name);
+    cardElement.append(uList);
+    cardElement.append(createFighterImage(fighter));
+    fighterElement.append(cardElement);
+  }
 
   return fighterElement;
 }
 
 export function createFighterImage(fighter) {
   const { source, name } = fighter;
-  const attributes = { 
-    src: source, 
+  const attributes = {
+    src: source,
     title: name,
-    alt: name 
+    alt: name,
+    width: "100",
+    height: "200"
   };
   const imgElement = createElement({
     tagName: 'img',
