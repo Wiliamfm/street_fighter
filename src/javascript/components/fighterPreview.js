@@ -9,9 +9,10 @@ export function createFighterPreview(fighter, position) {
 
   // todo: show fighter info (image, name, health, etc.)
   if (fighter) {
+    const positionClassName = position === 'right' ? 'arena___right-fighter' : 'arena___left-fighter';
     const cardElement = createElement({
       tagName: 'div',
-      className: 'card'
+      className: 'card ' + positionClassName
     });
     const name = createElement({
       tagName: 'h4'
@@ -37,7 +38,7 @@ export function createFighterPreview(fighter, position) {
     uList.append(health);
     cardElement.append(name);
     cardElement.append(uList);
-    cardElement.append(createFighterImage(fighter));
+    cardElement.append(createFighterImage(fighter, position));
     fighterElement.append(cardElement);
   }
 
