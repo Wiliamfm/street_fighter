@@ -1,6 +1,6 @@
 import { createElement } from '../helpers/domHelper';
 import { createFighterImage } from './fighterPreview';
-import { fight, getDamage, getHitPower, getBlockPower } from './fight';
+import { fight } from './fight';
 
 export function renderArena(selectedFighters) {
   const root = document.getElementById('root');
@@ -15,6 +15,7 @@ export function renderArena(selectedFighters) {
   const [firstFighter, secondFighter] = selectedFighters;
   fight(firstFighter, secondFighter).
     then(winner => {
+      alert(winner);
     }).catch();
 }
 
